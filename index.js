@@ -2,7 +2,7 @@ let qShows = document.querySelector("#queued");
 let showList = document.querySelector("#list");
 let form = document.querySelector("#search")
 let shows = []
-
+let filteredShows = []
 
 
 
@@ -46,10 +46,10 @@ function start() {
         e.preventDefault()
         let query = e.target.search.value.toLowerCase()
         console.log(query)
-        const filteredShows = shows.filter(show => {
+        filteredShows.title = shows.filter(show => {
             return show.toLowerCase().includes(query)
         })
-        console.log(filteredShows)
+        createShows(filteredShows)
     })
 }
 
