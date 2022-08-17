@@ -9,9 +9,10 @@ function createShows(show){
     listedShow.addEventListener("click", (e) => {
         let newQueued = document.createElement(`li`)
         newQueued.innerHTML = `${show.title}`
-        qShows.append(newQueued)
+        qShows.appendChild(newQueued)
         newQueued.addEventListener("click" , (e) => {
             console.log("asdas")
+            newQueued.remove()
         })
     })
 }
