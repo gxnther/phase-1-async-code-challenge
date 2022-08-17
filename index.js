@@ -6,7 +6,16 @@ function createShows(show){
     let listedShow = document.createElement(`li`)
     listedShow.innerHTML = `${show.title}`
     showList.append(listedShow)  
+    listedShow.addEventListener("click", (e) => {
+        let newQueued = document.createElement(`li`)
+        newQueued.innerHTML = `${show.title}`
+        qShows.append(newQueued)
+        newQueued.addEventListener("click" , (e) => {
+            console.log("asdas")
+        })
+    })
 }
+
 
 function getShows(){
     fetch(`http://localhost:3000/shows`)
@@ -17,4 +26,5 @@ function getShows(){
 function start(){
     getShows()
 }
+
 start()
