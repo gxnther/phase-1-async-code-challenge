@@ -6,6 +6,7 @@ let filteredShows = []
 
 
 
+
 function createShows(show) {
     listedShow = document.createElement(`li`)
     listedShow.innerHTML = `${show.title}`
@@ -20,22 +21,12 @@ function createShows(show) {
     })
 }
 
-// function getShows() {
-//     fetch(`http://localhost:3000/shows`)
-//         .then((resp) => resp.json())
-//         .then((showData) => {
-//             console.log("show")
-//             showData.forEach(show => {
-//                 shows.push(show.title)
-//                 createShows(show)
-//             })
-//         })
-// }
 
 function start() {
     fetch(`http://localhost:3000/shows`)
         .then((resp) => resp.json())
         .then((showData) => {
+            allShows = showData 
             console.log("show")
             showData.forEach(show => {
                 shows.push(show.title)
@@ -49,10 +40,27 @@ function start() {
         filteredShows.title = shows.filter(show => {
             return show.toLowerCase().includes(query)
         })
-        createShows(filteredShows)
-    })
+        if (filteredShows.title.length === 1) {
+            showList.innerHTML = ""
+            createShows(filteredShows)
+            console.log(filteredShows)
+            console.log(filteredShows.title.length)
+        }
+        else {
+            allShows.forEach(show => createShows(show))
+            
+        }
+})
 }
 
 
-
 start()
+
+
+        // else if (filteredShows.) {
+        //     console.log ("NO SHOW FOUND")
+        //     allShows.forEach(show => {
+        //         createShows(show)
+        //     })
+        // }
+    // })
