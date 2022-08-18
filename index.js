@@ -26,8 +26,7 @@ function start() {
     fetch(`http://localhost:3000/shows`)
         .then((resp) => resp.json())
         .then((showData) => {
-            allShows = showData 
-            console.log("show")
+            allShows = showData
             showData.forEach(show => {
                 shows.push(show.title)
                 createShows(show)
@@ -43,24 +42,14 @@ function start() {
         if (filteredShows.title.length === 1) {
             showList.innerHTML = ""
             createShows(filteredShows)
-            console.log(filteredShows)
-            console.log(filteredShows.title.length)
-        }
-        else {
+        } else {
+            showList.innerHTML = ""
             allShows.forEach(show => createShows(show))
-            
         }
-})
+    })
 }
 
 
 start()
 
 
-        // else if (filteredShows.) {
-        //     console.log ("NO SHOW FOUND")
-        //     allShows.forEach(show => {
-        //         createShows(show)
-        //     })
-        // }
-    // })
